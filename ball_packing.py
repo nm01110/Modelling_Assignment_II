@@ -1,4 +1,5 @@
 import math
+import matplotlib.pyplot as plt
 
 # Data (in meters)
 room_length = 8.0
@@ -27,8 +28,16 @@ count_SC  = round(ideal_count * APF_SC)
 count_BCC = round(ideal_count * APF_BCC)
 count_FCC = round(ideal_count * APF_FCC)
 
-#
+#Create bar chart
 counts = [count_SC, count_BCC, count_FCC]
 labels = ['SC', 'BCC', 'FCC']
 plt.bar(labels, counts, color=['red', 'blue', 'green'])
 plt.ylabel('Number of Balls')
+plt.title('Ball Packing in Room (8m × 7m × 3m)')
+
+# Add value labels on top of bars
+for i, v in enumerate(counts):
+    plt.text(i, v + 5000, f'{v:,}', ha='center')
+
+# Show the chart
+plt.show()
